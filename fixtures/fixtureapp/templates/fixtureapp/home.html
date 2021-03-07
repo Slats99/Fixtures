@@ -1,0 +1,19 @@
+{% extends 'fixtureapp/base.html' %}
+
+{% block content %}
+    <h3>Upcoming Home Fixtures</h3>
+    {% if fixtures %}
+        {% regroup fixtures by date as date_list %}
+        {% for date in date_list %}
+        <div id="date_div">{{ date.grouper|date:'l jS F' }}
+            {% for fixture in date.list %}
+            <div id="fixture_div">{{ fixture.time|time:'G:i' }}   {{ fixture.team }}
+                v  {{ fixture.opposition }}, {{ fixture.get_venue_display }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No fixtures are available.</p>
+    {% endif %}
+{% endblock %}
+

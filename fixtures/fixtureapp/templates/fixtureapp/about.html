@@ -1,0 +1,14 @@
+{% extends 'fixtureapp/base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="about">
+    <div style="float: left; width: 70%;">
+        <p>This website was created by Martin Slater using the Django Python Framework. The database utilises sqlite.</p>
+        <p>For more information contact me at martinhslater@gmail.com</p>
+    </div>
+    <div style="float: left; width: 30%;">
+        <a id="git" href="https://github.com/Slats99"><img src="{% static 'images/GitHub.png' %}"width="75" height="75"></a>
+    </div>
+</div>
+{% endblock %}

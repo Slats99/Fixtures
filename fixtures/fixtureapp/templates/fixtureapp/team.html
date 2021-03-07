@@ -1,0 +1,25 @@
+{% extends 'fixtureapp/base.html' %}
+
+{% block content %}
+    <h3>{{ team_name }} Team Fixtures</h3>
+    {% if fixtures %}
+    <table style="width:100%">
+        <tr>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>Opposition</th>
+        <th>Venue</th>
+        </tr>
+        {% for fixture in fixtures %}
+            <tr>
+                <td>{{ fixture.date|date:'F jS' }} </td>
+                <td>{{ fixture.time|time:'G:i' }}</td>
+                <td>{{ fixture.opposition }}</td>
+                <td>{{ fixture.get_venue_display }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <p>No fixtures are available.</p>
+    {% endif %}
+{% endblock %}
+
