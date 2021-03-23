@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from django.db.models import Q
 from .models import Match, Team
 import datetime
 
@@ -19,7 +20,8 @@ class HomeView(generic.ListView):
         else:
             start = today
         end = start + datetime.timedelta(days=15)
-        return Match.objects.exclude(venue='A').filter(date__range=(start, end)).order_by('date')
+        # return Match.objects.exclude(venue='A').filter(date__range=(start, end)).order_by('date')
+        return Match.objects.exclude(venue='A').order_by('date')
 
 
 class TeamView(generic.ListView):
@@ -36,4 +38,13 @@ class TeamView(generic.ListView):
         m = Match(team_id=self.kwargs.get('team_id_slug'))
         data['team_name'] = m.team
         return data
+
+class WAGView(generic.ListView):
+    queryset = Match.objects.all().order_by('date')
+    template_name = 'fixtureapp/home.html'
+    context_object_name = 'fixtures'
+
+    def get_queryset(self):
+        """return all team_id team matches"""
+        return Match.objects.filter(Q(team_id=9)|Q(team_id=8)|Q(team_id=14)).order_by('date')
 

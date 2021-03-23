@@ -7,7 +7,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'fixtureapp/style.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="{% static 'images/scc.ico' %}" rel="icon" type="image/x-icon" />
+<link href="{% static 'images/favicon.ico' %}" rel="icon" type="image/x-icon" />
 </head>
 <body>
     <div class="topnav" id="myTopnav">
@@ -19,10 +19,11 @@
             <div class="dropdown-content">
                 <a href="{% url 'team_by_id' '1' %}">1st Team</a>
                 <a href="{% url 'team_by_id' '2' %}">2nd Team</a>
-                <a href="{% url 'team_by_id' '3' %}">3rd Team</a>
-                <a href="{% url 'team_by_id' '4' %}">4th Team</a>
-                <a href="{% url 'team_by_id' '5' %}">5th Team</a>
-                <a href="{% url 'team_by_id' '6' %}">Sunday Team</a>
+                <a href="{% url 'team_by_id' '5' %}">3rd Team</a>
+                <a href="{% url 'team_by_id' '3' %}">4th Team</a>
+                <a href="{% url 'team_by_id' '6' %}">5th Team</a>
+                <a href="{% url 'team_by_id' '4' %}">Sunday Team</a>
+                <a href="{% url 'teamWAG' %}">W&G</a>
             </div>
         </div>
         <a href="{% url 'admin:index' %}">Admin</a>
